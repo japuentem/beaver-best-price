@@ -1,0 +1,7 @@
+{
+  "name": "beaver-best-price",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

@@ -13,20 +13,31 @@ export class HomePage {
   resultado: string = '';
   precioPorCantidad1: number = 0;
   precioPorCantidad2: number = 0;
+  ganador1: boolean = false;
+  ganador2: boolean = false;
 
   compararPrecios() {
-    this.precioPorCantidad1 = this.precio1 / this.cantidad1;
-    this.precioPorCantidad2 = this.precio2 / this.cantidad2;
+    if (
+      this.precio1 > 0 &&
+      this.cantidad1 > 0 &&
+      this.precio2 > 0 &&
+      this.cantidad2 > 0
+    ) {
+      this.precioPorCantidad1 = this.precio1 / this.cantidad1;
+      this.precioPorCantidad2 = this.precio2 / this.cantidad2;
 
-    console.log('precioPorCantidad1: ', this.precioPorCantidad1);
-    console.log('precioPorCantidad2: ', this.precioPorCantidad2);
+      console.log('precioPorCantidad1: ', this.precioPorCantidad1);
+      console.log('precioPorCantidad2: ', this.precioPorCantidad2);
 
-    if (this.precioPorCantidad1 < this.precioPorCantidad2) {
-      this.resultado = 'Producto 1 es más barato';
-    } else if (this.precioPorCantidad1 > this.precioPorCantidad2) {
-      this.resultado = 'Producto 2 es más barato';
-    } else {
-      this.resultado = 'Ambos productos tienen el mismo precio';
+      if (this.precioPorCantidad1 < this.precioPorCantidad2) {
+        this.resultado = 'Producto 1 es más barato';
+        this.ganador1 = true;
+      } else if (this.precioPorCantidad1 > this.precioPorCantidad2) {
+        this.resultado = 'Producto 2 es más barato';
+        this.ganador2 = true;
+      } else {
+        this.resultado = 'Ambos productos tienen el mismo precio';
+      }
     }
   }
 }

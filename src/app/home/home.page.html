@@ -5,6 +5,7 @@
 </ion-header>
 
 <ion-content class="ion-padding">
+  <!--
   <ion-list>
     <div class="left">
       <ion-item>
@@ -34,12 +35,52 @@
     </div>
   </ion-list>
 
-  <ion-item *ngIf="resultado">
-    <ion-label>El producto más barato es:</ion-label>
-    <ion-text>{{resultado}}</ion-text>
-  </ion-item>
+  <div class="resultado">
+    <ion-item *ngIf="resultado">
+      <ion-label>El producto más barato es:</ion-label>
+      <ion-text>{{resultado}}</ion-text>
+    </ion-item>
+  </div>
+ -->
 
-  <ion-button expand="full" (click)="compararPrecios()"
-    >Comparar precios</ion-button
-  >
+  <div class="container">
+    <div
+      class="left"
+      [ngStyle]="{ 'background-color': ganador1 ? 'lightgreen' : 'white' }"
+    >
+      <div class="label">Precio 1:</div>
+      <div class="data">
+        <input type="number" placeholder="$0" [(ngModel)]="precio1" />
+      </div>
+      <div class="label">Cantidad 1:</div>
+      <div class="data">
+        <input type="number" placeholder="$0" [(ngModel)]="cantidad1" />
+      </div>
+      <div *ngIf="resultado">Producto 1: {{ precioPorCantidad1 }}</div>
+    </div>
+
+    <div
+      class="right"
+      [ngStyle]="{ 'background-color': ganador2 ? 'lightgreen' : 'white' }"
+    >
+      <div class="label">Precio 2:</div>
+      <div class="data">
+        <input type="number" placeholder="$0" [(ngModel)]="precio2" />
+      </div>
+      <div class="label">Cantidad 2:</div>
+      <div class="data">
+        <input type="number" placeholder="0" [(ngModel)]="cantidad2" />
+      </div>
+      <div *ngIf="resultado">Producto 2: {{precioPorCantidad2}}</div>
+    </div>
+  </div>
+  <div *ngIf="resultado" class="resultado">
+    <div>{{resultado}}</div>
+  </div>
+
+  <div class="boton">
+    <ion-button expand="full" (click)="compararPrecios()"
+      >Comparar precios</ion-button
+    >
+  </div>
 </ion-content>
